@@ -1,7 +1,7 @@
 public interface IEmpresaService
 {
-    Task AdicionarEmpresaAsync(EmpresaDto empresa);
-    Task AtualizarEmpresaAsync(int id, EmpresaDto empresa);
+    Task AdicionarEmpresaAsync(AddUpdateEmpresaDto empresa);
+    Task AtualizarEmpresaAsync(int id, AddUpdateEmpresaDto empresa);
     Task RemoverEmpresaAsync(int id);
     Task<IEnumerable<EmpresaDto>?> ObterTodosAsync();
 }

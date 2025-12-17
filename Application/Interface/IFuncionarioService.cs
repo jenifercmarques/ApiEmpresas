@@ -1,7 +1,7 @@
 public interface IFuncionarioService
 {
-    Task AdicionarFuncionarioAsync(FuncionarioDto funcionario);
-    Task AtualizarFuncionarioAsync(int id, FuncionarioDto funcionario);
+    Task AdicionarFuncionarioAsync(AddUpdateFuncionarioDto funcionario);
+    Task AtualizarFuncionarioAsync(int id, AddUpdateFuncionarioDto funcionario);
     Task RemoverFuncionarioAsync(int id);
     Task<IEnumerable<FuncionarioDto>?> ObterTodosAsync();
 }

@@ -11,7 +11,7 @@ public class FuncionarioController : ControllerBase
         _funcionarioService = funcionarioService;
     }
     [HttpPost]
-    public async Task<IActionResult> CreateFuncionario([FromBody] FuncionarioDto funcionarioDto)
+    public async Task<IActionResult> CreateFuncionario([FromBody] AddUpdateFuncionarioDto funcionarioDto)
     {
        try
         {
@@ -65,7 +65,7 @@ public class FuncionarioController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateFuncionario([FromRoute] int id, [FromBody] FuncionarioDto funcionarioDto)
+    public async Task<IActionResult> UpdateFuncionario([FromRoute] int id, [FromBody] AddUpdateFuncionarioDto funcionarioDto)
     {
        try
         {

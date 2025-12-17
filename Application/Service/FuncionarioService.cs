@@ -9,12 +9,12 @@ public class FuncionarioService: IFuncionarioService
         _funcionarioRepository = funcionarioRepository;
     }
     
-    public async Task AdicionarFuncionarioAsync(FuncionarioDto funcionario)
+    public async Task AdicionarFuncionarioAsync(AddUpdateFuncionarioDto funcionario)
     {
         await _funcionarioRepository.AddFuncionarioAsync(new Funcionario(funcionario.Nome, funcionario.Cpf, funcionario.ContratoAtivo));
     }
 
-    public async Task AtualizarFuncionarioAsync(int id, FuncionarioDto funcionario)
+    public async Task AtualizarFuncionarioAsync(int id, AddUpdateFuncionarioDto funcionario)
     {
         var funcionarioExistente = await _funcionarioRepository.GetFuncionarioByIdAsync(id);
         if (funcionarioExistente is null)
@@ -37,6 +37,6 @@ public class FuncionarioService: IFuncionarioService
         var funcionarios = await _funcionarioRepository.GetAllFuncionariosAsync();
         if (funcionarios is null)
             return null;
-        return funcionarios.Select(f => new FuncionarioDto(f.Nome, f.Cpf, f.ContratoAtivo));
+        return funcionarios.Select(f => new FuncionarioDto(f.Id, f.Nome, f.Cpf, f.ContratoAtivo));
     }
 }

@@ -9,12 +9,12 @@ public class EmpresaService: IEmpresaService
         _empresaRepository = empresaRepository;
     }
     
-    public async Task AdicionarEmpresaAsync(EmpresaDto empresa)
+    public async Task AdicionarEmpresaAsync(AddUpdateEmpresaDto empresa)
     {
         await _empresaRepository.AddEmpresaAsync(new Empresa(empresa.Nome, empresa.Cnpj, empresa.QuantidadeFuncionarios));
     }
 
-    public async Task AtualizarEmpresaAsync(int id, EmpresaDto empresa)
+    public async Task AtualizarEmpresaAsync(int id, AddUpdateEmpresaDto empresa)
     {
         var empresaExistente = await _empresaRepository.GetEmpresaByIdAsync(id);
         if (empresaExistente is null)
@@ -37,6 +37,6 @@ public class EmpresaService: IEmpresaService
         var empresas = await _empresaRepository.GetAllEmpresasAsync();
         if (empresas is null)
             return null;
-        return empresas.Select(e => new EmpresaDto(e.Nome, e.Cnpj, e.QuantidadeFuncionarios));
+        return empresas.Select(e => new EmpresaDto(e.Id, e.Nome, e.Cnpj, e.QuantidadeFuncionarios));
     }
 }

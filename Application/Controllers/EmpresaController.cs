@@ -11,7 +11,7 @@ public class EmpresaController : ControllerBase
         _empresaService = empresaService;
     }
     [HttpPost]
-    public async Task<IActionResult> CreateEmpresa([FromBody] EmpresaDto empresaDto)
+    public async Task<IActionResult> CreateEmpresa([FromBody] AddUpdateEmpresaDto empresaDto)
     {
        try
         {
@@ -65,7 +65,7 @@ public class EmpresaController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateEmpresa([FromRoute] int id, [FromBody] EmpresaDto empresaDto)
+    public async Task<IActionResult> UpdateEmpresa([FromRoute] int id, [FromBody] AddUpdateEmpresaDto empresaDto)
     {
        try
         {
